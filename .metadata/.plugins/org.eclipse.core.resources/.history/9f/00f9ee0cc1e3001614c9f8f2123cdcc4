@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+  <groupId>driverlocator</groupId>
+  <artifactId>WhereIsMyDriver</artifactId>
+  <version>0.0.1-SNAPSHOT</version> 
+
+  <name>WhereIsMyDriver</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <sourceJavaVersion>1.7</sourceJavaVersion>
+    <targetJavaVersion>1.7</targetJavaVersion>
+    <spring.version>4.2.4.RELEASE</spring.version>
+    <dropwizard.version>0.9.1</dropwizard.version>
+    <slf4j.version>1.7.21</slf4j.version>
+    <junit.version>4.12</junit.version>
+  </properties>
+
+  <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.8</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>${sourceJavaVersion}</source>
+                    <target>${targetJavaVersion}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>Maven Repository Switchboard</name>
+            <url>http://repo.maven.apache.org/maven2/</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>mavencentral</id>
+            <name>plugins-releases</name>
+            <url>http://repo.maven.apache.org/maven2/</url>
+        </pluginRepository>
+    </pluginRepositories>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>1.9.0</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.hamcrest</groupId>
+                    <artifactId>hamcrest-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.codahale.metrics</groupId>
+            <artifactId>metrics-annotation</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+    </dependencies>
+   <!--  <modules>
+        <module>driver-lookup-service</module>
+        <module>driver-lookup-test-suite</module>
+    </modules>   --> 
+</project>
