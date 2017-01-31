@@ -13,13 +13,25 @@ private static final double TEN_METER_DECIMAL_OFFSET_IN_LATLONG = 0.0001d;
 
 private final double latitude;
 private final double longitude;
+private double accuracy;
 
-public Position(double latitude, double longitude) {
+public Position(double latitude, double longitude, double accuracy) {
 
     validate(latitude, longitude);
     this.latitude = latitude;
     this.longitude = longitude;
+    this.accuracy = accuracy;	
 }
+
+
+
+public Position(double latitude, double longitude) {
+	super();
+	this.latitude = latitude;
+	this.longitude = longitude;
+}
+
+
 
 public static void validate(double latitude, double longitude) {
 
@@ -36,6 +48,10 @@ public double getLatitude() {
 
 public double getLongitude() {
     return longitude;
+}
+
+public double getAccuracy() {
+	return accuracy;
 }
 
 
@@ -69,7 +85,6 @@ public boolean equals(Object obj) {
 	return true;
 }
 
-
 public double aerialDistance(final Position otherPoint) {
 
     final double lat1 = this.getLatitude();
@@ -94,12 +109,12 @@ public double aerialDistance(final Position otherPoint) {
 public Position addDistanceAcrossLatitude(final double distanceInMeters) {
 
     final double increment = (distanceInMeters / 10) * TEN_METER_DECIMAL_OFFSET_IN_LATLONG;
-    return new Position(this.getLatitude() + increment, this.getLongitude());
+    return new Position(this.getLatitude() + increment, this.getLongitude(), this.getAccuracy());
 }
 
 public Position addDistanceAcrossLongitude(final double distanceInMeters) {
     final double increment = (distanceInMeters / 10) * TEN_METER_DECIMAL_OFFSET_IN_LATLONG;
-    return new Position(this.getLatitude(), this.getLongitude() + increment);
+    return new Position(this.getLatitude(), this.getLongitude() + increment,this.getAccuracy());
 }
 
 public Position[] getBoundingSquareLatLongLimits(final double distance){
@@ -134,7 +149,7 @@ public Position[] getBoundingSquareLatLongLimits(final double distance){
     }
 
     return new Position[]{
-            new Position(Math.toDegrees(minLat),Math.toDegrees(minLon)),
-            new Position(Math.toDegrees(maxLat), Math.toDegrees(maxLon)) };
+            new Position(Math.toDegrees(minLat),Math.toDegrees(minLon),accuracy),
+            new Position(Math.toDegrees(maxLat), Math.toDegrees(maxLon),accuracy) };
 }
 }

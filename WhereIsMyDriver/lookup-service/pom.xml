@@ -23,8 +23,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.3</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -55,9 +55,9 @@
                         <argument>-Dcom.sun.management.jmxremote.ssl=false</argument>
                         <argument>-classpath</argument>
                         <classpath/>
-                        <argument>in.khajurkar.driverlookup.server.WhereIsMyDriverBooter</argument>
+                        <argument>com.lookup.service.server.WhereIsMyDriverMain</argument>
                         <argument>server</argument>
-                        <argument>config/whereismydriver.yaml</argument>
+                        <argument>config/wimd.yaml</argument>
                     </arguments>
                 </configuration>
             </plugin>
